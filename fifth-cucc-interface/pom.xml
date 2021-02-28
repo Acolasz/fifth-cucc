@@ -81,6 +81,9 @@
 						<goals>
 							<goal>jar</goal>
 						</goals>
+						<configuration>
+							<skip>${skip.javadoc}</skip>
+						</configuration>
 					</execution>
 				</executions>
 			</plugin>

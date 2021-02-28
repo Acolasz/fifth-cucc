@@ -14,6 +14,7 @@
 		<project.version>1.0.0-SNAPSHOT</project.version>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 		<project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
+		<skip.javadoc>false</skip.javadoc>
 		<java.version>1.8</java.version>
 		<openapi.yaml.location>fifth-cucc-interface/src/main/swagger/fifth-cucc-api.yaml</openapi.yaml.location>
 		<openapi.base.package>hu.kukutyin.fifth</openapi.base.package>
@@ -106,4 +107,13 @@
 			</plugin>
 		</plugins>
 	</build>
+
+	<profiles>
+		<profile>
+			<id>skipJavaDoc</id>
+			<properties>
+				<skip.javadoc>true</skip.javadoc>
+			</properties>
+		</profile>
+	</profiles>
 </project>
