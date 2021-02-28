@@ -1,0 +1,91 @@
+openapi: 3.0.0
+info:
+  version: 1.0.0
+  title: Greeting Services v2
+  description: Greeting Services v2
+
+
+greeting:
+  get:
+    tags:
+      - 'GreetingService'
+    description: 'Greeting controller'
+    operationId: greeting
+    responses:
+      200:
+        description: "Success"
+        content:
+          text/plain:
+            schema:
+              type: string
+      500:
+        description: 'Internal server error'
+
+hello:
+  get:
+    tags:
+      - 'GreetingService'
+    description: 'Greeting controller'
+    operationId: hello
+    parameters:
+      - in: path
+        name: helloName
+        schema:
+          type: string
+        required: true
+        description: "Hello: ${helloName}"
+    responses:
+      200:
+        description: "Success"
+        content:
+          text/plain:
+            schema:
+              type: string
+      500:
+        description: 'Internal server error'
+
+components:
+  schemas:
+    AuthRequest:
+      description: 'Auth Request model'
+      properties:
+        username:
+          type: string
+        password:
+          type: string
+        grant_type:
+          type: string
+        client_id:
+          type: string
+        client_secret:
+          type: string
+
+    AuthResponse:
+      description: 'Auth Response model'
+      properties:
+        access_token:
+          type: string
+        expires_in:
+          type: integer
+        refresh_expires_in:
+          type: integer
+        refresh_token:
+          type: string
+        token_type:
+          type: string
+        not-before-policy:
+          type: integer
+        session_state:
+          type: string
+        scope:
+          type: string
+
+  requestBodies:
+    AuthBody:
+      description: A JSON object containing Auth information
+      required: true
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/AuthRequest'
+

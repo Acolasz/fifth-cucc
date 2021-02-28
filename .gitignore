@@ -1,0 +1,42 @@
+## Idea ##
+.idea/
+/**/*.iml
+/**/*.iws
+/**/*.dot
+/**/out/
+
+## Eclipse ##
+/**/.classpath
+/**/.project
+/**/.settings/
+
+
+## Mac ##
+.DS_Store
+
+# Maven
+/**/log/
+/**/target
+/**/.flattened-pom.xml
+/**/bin
+/**/oms-rest/
+/**/.externalToolBuilders
+/**/.springBeans
+/**/.tern-project
+/**/dependency-reduced-pom.xml
+
+# Maven wrapper
+.mvn/
+HELP.md
+mvnw
+mvnw*
+
+# Git
+/**/*.orig
+/**/*.rej
+/**/.editorconfig
+/.metadata/
+
+/**/npm-debug.log
+
+.vscode/

@@ -1,0 +1,23 @@
+openapi: 3.0.0
+info:
+  version: 1.0.0
+  title: Fifth Cuccc Services v2
+  description: Fifth Cuccc Services v2
+
+paths:
+  /greeting/:
+    $ref: './greeting-services.yaml#/greeting'
+  /greeting/{helloName}:
+    $ref: './greeting-services.yaml#/hello'
+  /healthcheck:
+    $ref: './product-services.yaml#/healthcheck'
+  /product/all:
+    $ref: './product-services.yaml#/productAll'
+  /product:
+    $ref: './product-services.yaml#/product'
+  /product/{id}:
+    $ref: './product-services.yaml#/productId'
+  /product/{id}/rate:
+    $ref: './product-services.yaml#/productRateById'
+  /product/1:
+    $ref: './product-services.yaml#/product1'
