@@ -31,4 +31,7 @@ heroku create fifth-cucc-service
 heroku stack:set container --app <app_name>
 heroku stack:set container --app fifth-cucc-service
 ```
-
+## Heroku logging
+```shell script
+heroku logs --tail
+```
