@@ -34,4 +34,12 @@ heroku stack:set container --app fifth-cucc-service
 ## Heroku logging
 ```shell script
 heroku logs --tail
+heroku logs -p postgres -t
+```
+# Heroku Addons
+```shell script
+# default postgresql version: 12
+heroku addons:create heroku-postgresql:hobby-dev
+heroku addons:create heroku-postgresql:hobby-dev --version=13 --name=postgresql-fifth-cucc-db
+heroku pg:info
 ```
