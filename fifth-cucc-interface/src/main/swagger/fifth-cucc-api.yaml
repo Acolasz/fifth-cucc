@@ -10,14 +10,12 @@ paths:
   /greeting/{helloName}:
     $ref: './greeting-services.yaml#/hello'
   /healthcheck:
-    $ref: './product-services.yaml#/healthcheck'
-  /product/all:
-    $ref: './product-services.yaml#/productAll'
-  /product:
-    $ref: './product-services.yaml#/product'
-  /product/{id}:
-    $ref: './product-services.yaml#/productId'
-  /product/{id}/rate:
-    $ref: './product-services.yaml#/productRateById'
-  /product/1:
-    $ref: './product-services.yaml#/product1'
+    $ref: './move-services.yaml#/healthcheck'
+  /move/all:
+    $ref: './move-services.yaml#/moveAll'
+  /move:
+    $ref: './move-services.yaml#/move'
+  /move/{id}:
+    $ref: './move-services.yaml#/moveId'
+  /move/{id}/rate:
+    $ref: './move-services.yaml#/moveRateById'

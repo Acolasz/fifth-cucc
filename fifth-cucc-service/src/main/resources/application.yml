@@ -1,6 +1,17 @@
 server:
-  port: 9095
+  port: ${server.port}
 
 spring:
   application:
     name: fifth-cucc
+
+  datasource:
+    driver-class-name: org.postgresql.Driver
+    platform: postgres
+    url: "jdbc:postgresql://ec2-3-232-163-23.compute-1.amazonaws.com:5432/d4mu77j9bi5aj1"
+    username: "lfozmqppdhtpjj"
+    password: "f5ae3a7033f884a4b7048759a4a66f9d9c67d28888587abd7b2fe2426db861a7"
+
+mybatis:
+  type-aliases-package: hu.kukutyin.fifth.domain
+  mapper-locations: classpath*:/mapper/*Mapper.xml

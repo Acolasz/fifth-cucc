@@ -5,36 +5,35 @@ import java.util.Arrays;
 import java.util.List;
 import java.util.stream.Collectors;
 
+import org.hamcrest.Matchers;
+import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
 
-import org.hamcrest.Matchers;
-import org.junit.Assert;
-
-import hu.kukutyin.fifth.domain.Product;
+import hu.kukutyin.fifth.domain.Move;
 
 public class StreamTest {
-    private static final Product EMPTY_PRODUCT = null;
-    private List<Product> productList;
+    private static final Move EMPTY_PRODUCT = null;
+    private List<Move> moveList;
 
     @Before
     public void init() {
-        productList = new ArrayList<>();
-        Product product1 = new Product();
-        product1.setId(1);
-        product1.setName("Federer");
-        product1.setDescription("The BEST");
-        productList.add(product1);
-        Product product2 = new Product();
-        product2.setId(2);
-        product2.setName("Ibrahimovic");
-        product2.setDescription("The Best");
-        productList.add(product2);
+        moveList = new ArrayList<>();
+        Move move1 = new Move();
+        move1.setId(1);
+        move1.setName("Federer");
+        move1.setDescription("The BEST");
+        moveList.add(move1);
+        Move move2 = new Move();
+        move2.setId(2);
+        move2.setName("Ibrahimovic");
+        move2.setDescription("The Best");
+        moveList.add(move2);
     }
 
     @Test
     public void getFilter_fromList_Test() {
-        this.productList.stream()
+        this.moveList.stream()
                 .filter(s -> {
 //                    System.out.println("Nothing will write");
 //                    System.out.println("------------------");
@@ -46,7 +45,7 @@ public class StreamTest {
 
     @Test
     public void getFilter_forEach_fromList_Test() {
-        this.productList.stream()
+        this.moveList.stream()
                 .filter(s -> {
 //                    System.out.println("filter: " + s);
                     return true;
@@ -58,30 +57,30 @@ public class StreamTest {
 
     @Test
     public void getFilter_findAny_fromList_Test() {
-        Product product = productList.stream()
+        Move move = moveList.stream()
                 .filter(p -> 1 == p.getId())
                 .findAny()
                 .orElse(null);
-        Assert.assertThat("findAny Product", product, Matchers.hasProperty("name", Matchers.equalTo("Federer")));
+        Assert.assertThat("findAny Move", move, Matchers.hasProperty("name", Matchers.equalTo("Federer")));
     }
 
     @Test
     public void update_fromList_Test() {
         Integer id = 1;
-        Product product = new Product();
-        product.setId(1);
-        product.setName("Ibra");
-        product.setDescription("The Best");
-        productList = productList.stream()
+        Move move = new Move();
+        move.setId(1);
+        move.setName("Ibra");
+        move.setDescription("The Best");
+        moveList = moveList.stream()
                 .map(p -> {
                     if (id.equals(p.getId())) {
-                        return product;
+                        return move;
                     } else {
                         return p;
                     }
                 })
                 .collect(Collectors.toList());
-        Assert.assertThat("Update Product List", product, Matchers.hasProperty("name", Matchers.equalTo("Ibra")));
+        Assert.assertThat("Update Move List", move, Matchers.hasProperty("name", Matchers.equalTo("Ibra")));
     }
 
     @Test

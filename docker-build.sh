@@ -12,7 +12,7 @@ EOF
 LOCAL_VOLUME_PATH=$1
 
 if [[ ! -d $LOCAL_VOLUME_PATH ]]; then
-  isDir ${LOCAL_VOLUME_PATH}
+  isDir "${LOCAL_VOLUME_PATH}"
   exit 1
 fi
 PROJECT_NAME=cucc

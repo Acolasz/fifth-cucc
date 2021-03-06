@@ -17,12 +17,12 @@ healthcheck:
       200:
         description: 'Success'
 
-productAll:
+moveAll:
   get:
     tags:
-      - 'ProductService'
-    operationId: getProducts
-    description: 'All Products'
+      - 'MoveService'
+    operationId: findAll
+    description: 'All Moves'
     responses:
       200:
         description: 'Success'
@@ -31,22 +31,22 @@ productAll:
             schema:
               type: array
               items:
-                $ref: '#/components/schemas/Product'
+                $ref: '#/components/schemas/Move'
       500:
         description: 'Internal server error'
 
-productId:
+moveId:
   get:
     tags:
-      - 'ProductService'
-    operationId: getProductId
-    description: 'return a Product by id'
+      - 'MoveService'
+    operationId: getById
+    description: 'return a Move by id'
     produces:
       - application/json
     parameters:
       - name: id
         in: path
-        description: 'Id of Product to return'
+        description: 'Id of Move to return'
         required: true
         schema:
           type: integer
@@ -56,14 +56,14 @@ productId:
         content:
           application/json:
             schema:
-              $ref: '#/components/schemas/Product'
+              $ref: '#/components/schemas/Move'
       500:
         description: 'Internal server error'
   put:
     tags:
-      - 'ProductService'
-    description: 'Update Product'
-    operationId: updateProductId
+      - 'MoveService'
+    description: 'Update Move'
+    operationId: update
     consumes:
       - application/json
     produces:
@@ -76,7 +76,7 @@ productId:
         schema:
           type: integer
     requestBody:
-      $ref: '#/components/requestBodies/ProductBody'
+      $ref: '#/components/requestBodies/MoveBody'
     responses:
       200:
         description: Success
@@ -87,14 +87,14 @@ productId:
         content:
           application/json:
             schema:
-              $ref: '#/components/schemas/Product'
+              $ref: '#/components/schemas/Move'
       500:
         description: 'Internal server error'
   delete:
     tags:
-      - 'ProductService'
-    operationId: deleteProductById
-    description: 'delete a product by id'
+      - 'MoveService'
+    operationId: delete
+    description: 'delete a Move by id'
     parameters:
 #      - in: header
 #        name: Authorization
@@ -103,7 +103,7 @@ productId:
 #          type: string
       - in: path
         name: id
-        description: 'Id of Product to return'
+        description: 'Id of Move to return'
         required: true
         schema:
           type: integer
@@ -113,20 +113,20 @@ productId:
       400:
         description: 'Invalid ID supplied'
       404:
-        description: 'Product not found'
+        description: 'Move not found'
 
-product:
+move:
   post:
     tags:
-      - 'ProductService'
-    description: 'Add a new product to the store'
-    operationId: createProduct
+      - 'MoveService'
+    description: 'Add a new Move to the store'
+    operationId: create
     consumes:
       - application/json
     produces:
       - application/json
     requestBody:
-      $ref: '#/components/requestBodies/ProductBody'
+      $ref: '#/components/requestBodies/MoveBody'
     responses:
       200:
         description: "Success"
@@ -137,19 +137,19 @@ product:
         content:
           application/json:
             schema:
-              $ref: '#/components/schemas/Product'
+              $ref: '#/components/schemas/Move'
 
       405:
         description: 'Invalid input'
       500:
         description: 'Internal server error'
 
-productRateById:
+moveRateById:
   put:
     tags:
-      - 'ProductService'
-    description: 'Update Product Rate'
-    operationId: updateProductRateById
+      - 'MoveService'
+    description: 'Update Move Rate'
+    operationId: updateMoveRateById
     consumes:
       - application/json
     produces:
@@ -157,7 +157,7 @@ productRateById:
     parameters:
       - in: path
         name: id
-        description: 'Id of product to return'
+        description: 'Id of Move to return'
         required: true
         schema:
           type: integer
@@ -173,32 +173,14 @@ productRateById:
         content:
           application/json:
             schema:
-              $ref: '#/components/schemas/Product'
-      500:
-        description: 'Internal server error'
-
-product1:
-  get:
-    tags:
-      - 'ProductService'
-    operationId: getProduct1
-    description: 'Product 1 id'
-    produces:
-      - application/json
-    responses:
-      200:
-        description: 'Success'
-        content:
-          application/json:
-            schema:
-              $ref: '#/components/schemas/Product'
+              $ref: '#/components/schemas/Move'
       500:
         description: 'Internal server error'
 
 components:
   schemas:
-    Product:
-      description: 'Product model'
+    Move:
+      description: 'Move model'
       properties:
         id:
           type: integer
@@ -210,7 +192,7 @@ components:
           type: integer
 
     Rate:
-      description: 'RateObject for Product model'
+      description: 'RateObject for Move model'
       properties:
         rate:
           type: integer
@@ -218,15 +200,15 @@ components:
         - rate
 
   requestBodies:
-    ProductBody:
-      description: A JSON object containing Product information
+    MoveBody:
+      description: A JSON object containing Move information
       required: true
       content:
         application/json:
           schema:
-            $ref: '#/components/schemas/Product'
+            $ref: '#/components/schemas/Move'
     RateBody:
-      description: A JSON object containing Product information
+      description: A JSON object containing Move information
       required: true
       content:
         application/json:
